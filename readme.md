@@ -5,9 +5,15 @@ The idea of this project is to put together a way to display the timetables for 
 Currently in early development. 
 
 [ ] Configurator program
+
 [.] Get next scheduled train time
+
 [ ] Get train time lateness
+
 [ ] Repeat over multiple lines + stops
+
 [ ] Tile format
+
 [ ] Animations
+
 [ ] Support for non-NYC trains
