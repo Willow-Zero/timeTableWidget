@@ -1,5 +1,5 @@
 #This is the config file for TimeTableWidget. The format is as follows
-#CITYlinenameStops=["examplestop"]
+#CITY={"lineName":["exampleStop","exampleStop2"]}
 # note that these need to be the exact stop names in the apis, unless ive futzed with the way the program interprets things
 # ill try to provide a list of the valid stop names for each service i implement
 # if you give no stops (the dict is empty) nothing will be done. 
@@ -8,42 +8,19 @@
 # please, enjoy my crappy widget
 
 #NYC rail services
-NYCAStops=[]
-NYCBStops=[]
-NYCCStops=[]
-NYCDStops=[]
-NYCEStops=[]
-NYCFStops=[]
-#note:X indicates express service
-NYCFXStops=[]
-NYCGStops=[]
-NYCJStops=[]
-NYCLStops=[]
-NYCMStops=[]
-NYCNStops=[]
-NYCQStops=[]
-NYCRStops=[]
-NYCWStops=[]
-NYCSStops=[]
-NYCTStops=[]
-NYCWStops=[]
-NYCZStops=[]
-NYC1Stops=[]
-NYC2Stops=[]
-NYC3Stops=[]
-NYC4Stops=[]
-NYC5Stops=[]
-NYC6Stops=[]
-NYC7Stops=[]
-NYC6Stops=[]
-NYC7Stops=[]
-#Staten Island Railroad
-NYCSIRStops=[]
+# services:
+# FS = Franklin Ave Shuttle
+# GS = 42nd St Shuttle
+# H = Rockaway Park Shuttle
+# SI = SIR
+#     1, 2, 3, 4, 5, 5X, 6, 6X, 7, 7X, A, B, C, D, E, F, FX, FS, G, GS, H, J, L, M, N, Q, R, SI, W, Z
+#     
+NYC={"6":["Astor Pl"]}
 #PATH lines (order is:Newark-World Trade, Hoboken-World Trade,Journal Square-33rd, Hoboken-33rd)
 PATHNWKWTCStops=[]
 PATHHOBWTCStops=[]
 PATHJSQ33Stops=[]
-PATHHOB33Stops=[]=True
+PATHHOB33Stops=[]
 #Metro-North(MN) Lines
 MNPVLStops=[] #Pascack Valley Line      
 MNPJLStops=[] #Port Jervis Line
