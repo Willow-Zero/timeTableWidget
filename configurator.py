@@ -28,9 +28,9 @@ NYCStops={
 	'C':
 		["168 St","163 St-Amsterdam Av","155 St","145 St","135 St","125 St","116 St","Cathedral Pkwy (110 St)","103 St","96 St","86 St","81 St-Museum of Natural History","72 St","59 St-Columbus Circle","50 St","42 St-Port Authority Bus Terminal","34 St-Penn Station","23 St","14 St","W 4 St-Wash Sq","Spring St","Canal St","Chambers St","Fulton St","High St","Jay St-MetroTech","Hoyt-Schermerhorn Sts","Lafayette Av","Clinton-Washington Avs","Franklin Av","Nostrand Av","Kingston-Throop Avs","Utica Av","Ralph Av","Rockaway Av","Broadway Junction","Liberty Av","Van Siclen Av","Shepherd Av","Euclid Av"],
 	'D':
-		[],
+		["Norwood-205 St","Bedford Park Blvd","Kingsbridge Rd","Fordham Rd","182-183 Sts","Tremont Av","174-175 Sts","170 St","167 St","161 St-Yankee Stadium","155 St","145 St","125 St","59 St-Columbus Circle","7 Av","47-50 Sts-Rockefeller Ctr","42 St-Bryant Pk","34 St-Herald Sq","W 4 St-Wash Sq","Broadway-Lafayette St","Grand St","DeKalb Av","Atlantic Av-Barclays Ctr","Union St","4 Av-9 St","Prospect Av","25 St","36 St","9 Av","Fort Hamilton Pkwy","50 St","55 St","62 St","71 St","79 St","18 Av","20 Av","Bay Pkwy","25 Av","Bay 50 St","Coney Island-Stillwell Av",
 	'E':
-		[],
+		["Jamaica-179 St","169 St","Parsons Blvd","Sutphin Blvd","","","","","","","","","","","","","","","","","","","",""],
 	'F':
 		[],
 	'FX':
@@ -42,7 +42,7 @@ NYCStops={
 	'GS':
 		[],
 	'H':
-		[],
+		["Broad Channel","Beach 90 St","Beach 98 St","Beach 105 St","Rockaway Park-Beach 116 St"],
 	'J':
 		[],
 	'L':
@@ -56,7 +56,7 @@ NYCStops={
 	'R':
 		[],
 	'SI':
-		[],
+		["Tottenville","Arthur Kill","Richmond Valley","Pleasant Plains","Prince's Bay","Huguenot","Annadale","Eltingville","Great Kills","Bay Terrace","Oakwood Heights","New Dorp","Grant City","Jefferson Av","Dongan Hills","Old Town","Grasmere","Clifton","Stapleton","Tompkinsville","St George"],
 	'W':
 		[],
 	'Z':

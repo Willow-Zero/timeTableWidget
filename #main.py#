@@ -62,7 +62,7 @@ nextstoptimes=[]
 for x in stopids:
 	nextstoptimes.append(list(getNextStopTime(x,line,feed)))
 nextstoptimes.remove([])
-print(nextstoptimes)
+print(nextstoptimes)][p[ 
 #for x in nextstoptimes:
         #print(x)
         #print(x[7])
