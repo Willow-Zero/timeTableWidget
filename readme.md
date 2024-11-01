@@ -4,6 +4,10 @@ The idea of this project is to put together a way to display the timetables for 
 
 Currently in early development. 
 
+dependencies: python3, [gtfs-kit](https://pypi.org/project/gtfs-kit/), [requests](https://pypi.org/project/requests/), [gtfs-realtime-bindings](https://pypi.org/project/gtfs-realtime-bindings/)
+
+
+
 [ ] Configurator program
 
 [.] Get next scheduled train time
