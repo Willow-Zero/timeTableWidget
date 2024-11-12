@@ -5,8 +5,15 @@ import pandas as pd
 import folium
 import datetime
 import config as c
+import iconDict
 
-
+def printIcon(icon,stationName,date,arrivalTime,):
+        dataArray = [stationName,date,arrivalTime,"","","","","","","","","","","","","","","","","","","","","","","","",""]
+        i=0
+        for x in icon:
+                y= " ║ "
+                print(x + y + dataArray[i])
+                i = i+1
 
 
 stops=["Astor Pl"]
@@ -26,6 +33,14 @@ def getNextStopTime(stops,line,feed):
 	stopnext=[]
 	for z in stopentries:
 		for z in stopentries:
+			if int(z[7].split(":")[0]) == int(currenttime.split(":")[0]):
+			        if int(z[7].split(":")[1]) == int(currenttime.split(":")[1]):
+			                if int(z[7].split(":")[2]) >= int(currenttime.split(":")[2]):
+                                                stopnext = Z
+                                                break
+			        if int(z[7].split(":")[1]) > int(currenttime.split(":")[1]):
+                                        stopnext = z
+                                        break
 			if int(z[7].split(":")[0]) > int(currenttime.split(":")[0]):
 				stopnext = z
 				break
@@ -49,6 +64,8 @@ pd.set_option('display.width', 99999)
 
 #print(gk.list_feed(path))
 stopids = [x[0] for x in feed.get_stops().values if x[1] in stops]
+stopNameToID = [x[1] for x in feed.get_stops().values if x[1] in stops]
+print(stopNameToID)
 
 #for x in feed.get_stops().values:
 #    print(x)
@@ -63,10 +80,12 @@ for x in stopids:
 	nextstoptimes.append(list(getNextStopTime(x,line,feed)))
 nextstoptimes.remove([])
 print(nextstoptimes)
-#for x in nextstoptimes:
+i=0
+for x in nextstoptimes:
         #print(x)
         #print(x[7])
-        #print(x[0])
+        printIcon(iconDict.Lines["NYC"][x[0]],stopNameToID[i],x[10],x[8])
+        i = i+1
         #print(x[3])
 #print(next)
 #print(stopentries)
@@ -75,20 +94,19 @@ feedrt = gtfs_realtime_pb2.FeedMessage()
 responsert = requests.get('https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2Fgtfs', headers={'x-api-key':'nHWpwh63jqaJMyYbpQ9rx6nSTMTGtGWu24F1mB8p'})
 feedrt.ParseFromString(responsert.content)
 for x in feedrt.entity:
-#        print(x.trip_update.stop_time_update[0].stop_id)
+      #  print(x.trip_update.stop_time_update[0].stop_id)
         try:
                 if x.trip_update.stop_time_update[0].stop_id in stopids:
                         print(x.trip_update.trip.start_date)
                         for z in x.trip_update.stop_time_update:
                                 if z.stop_id in stopids:
-                                        pass
-                 #                       print(z.arrival)
-                  #                      print(datetime.datetime.fromtimestamp(z.arrival.time))
+                 #                       pass
+                                        print(z.arrival)
+                                        print(datetime.datetime.fromtimestamp(z.arrival.time))
         except:
                 pass
 #        else:
 #                print(x.trip_update.trip.trip_id)
         
 #([5])
-
 
