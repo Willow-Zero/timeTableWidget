@@ -15,7 +15,7 @@
 # SI = SIR
 #     1, 2, 3, 4, 5, 5X, 6, 6X, 7, 7X, A, B, C, D, E, F, FX, FS, G, GS, H, J, L, M, N, Q, R, SI, W, Z
 #     
-NYC={"6":["Astor Pl"]}
+NYC:{"6":["Astor Pl"]}
 #PATH lines (order is:Newark-World Trade, Hoboken-World Trade,Journal Square-33rd, Hoboken-33rd)
 PATHNWKWTCStops=[]
 PATHHOBWTCStops=[]
@@ -44,9 +44,6 @@ LIRRPWBStops=[] #Port Washington Branch
 LIRRRkBStops=[] #Ronkonkoma Branch   
 LIRRWHBStops=[] #West Hempstead Branch
  
-
-
-
 
 
 

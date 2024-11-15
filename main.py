@@ -7,13 +7,18 @@ import datetime
 import config as c
 import iconDict
 
-def printIcon(icon,stationName,date,arrivalTime,):
-        dataArray = [stationName,date,arrivalTime,"","","","","","","","","","","","","","","","","","","","","","","","",""]
+def printIcon(icon,stationName,date,arrivalTime,departureTime,destination):
+        g = max(len(stationName),len(date),len(arrivalTime),len(destination),16)
+        bar = "═"*(g+1)
+        print("╔═══════════════════════════════════════════════════╦═" + bar + "╗")
+        dataArray = ["Station Name:"'hi'.ljust(g),stationName.ljust(g),bar,"Date:".ljust(g),date.ljust(g),bar,"Arrival Time:".ljust(g),arrivalTime.ljust(g),bar,"Departure Time:".ljust(g),departureTime.ljust(g).ljust(g),bar,"Destination:".ljust(g),destination.ljust(g),bar,"".ljust(g),"".ljust(g),bar,"".ljust(g),"".ljust(g),"".ljust(g),"","","","","","","","","","","","","","","",""]
         i=0
+        y = [" ║ "," ║ "," ╠═"," ║ "," ║ "," ╠═"," ║ "," ║ "," ╠═"," ║ "," ║ "," ╠═"," ║ "," ║ "," ╠═"," ║ "," ║ "," ╠═"," ║ "," ║ "," ║ "]
+        u = [" ║ "," ║ ","╣"," ║ "," ║ ","╣"," ║ "," ║ ","╣"," ║ "," ║ ","╣"," ║ "," ║ ","╣"," ║ "," ║ ","╣"," ║ "," ║ "," ║"]
         for x in icon:
-                y= " ║ "
-                print(x + y + dataArray[i])
+                print("║" + x + y[i] + dataArray[i]+ u[i])
                 i = i+1
+        print("╚═══════════════════════════════════════════════════╩═" + bar + "╝")
 
 
 stops=["Astor Pl"]
@@ -84,7 +89,7 @@ i=0
 for x in nextstoptimes:
         #print(x)
         #print(x[7])
-        printIcon(iconDict.Lines["NYC"][x[0]],stopNameToID[i],x[10],x[8])
+        printIcon(iconDict.Lines["NYC"][x[0]],stopNameToID[i],x[10],x[7],x[8],x[3])
         i = i+1
         #print(x[3])
 #print(next)
