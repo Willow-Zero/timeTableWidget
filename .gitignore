@@ -18,4 +18,5 @@ out.html
 #out.txt#
 configurator.py~
 out.txt~
-venv/
+venv/*
+__pycache__/*
