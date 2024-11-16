@@ -10,9 +10,7 @@ import universalUse as uu
 
 
 
-
-stops=["Astor Pl"]
-line="6"
+stopDict = c.NYC
 staticURL='http://web.mta.info/developers/data/nyct/subway/google_transit.zip'
 
 
@@ -31,7 +29,7 @@ def getNextStopTime(stops,line,feed):
 			if int(z[7].split(":")[0]) == int(currenttime.split(":")[0]):
 			        if int(z[7].split(":")[1]) == int(currenttime.split(":")[1]):
 			                if int(z[7].split(":")[2]) >= int(currenttime.split(":")[2]):
-                                                stopnext = Z
+                                                stopnext = z
                                                 break
 			        if int(z[7].split(":")[1]) > int(currenttime.split(":")[1]):
                                         stopnext = z
@@ -55,9 +53,21 @@ pd.set_option('display.max_columns', 99999)
 pd.set_option('display.width', 99999)
 
 #print(gk.list_feed(path))
-stopids = [x[0] for x in feed.get_stops().values if x[1] in stops]
-stopNameToID = [x[1] for x in feed.get_stops().values if x[1] in stops]
-print(stopNameToID)
+stopids = []
+stopNameToID = []
+for key in stopDict:
+        stopids = [x[0] for x in feed.get_stops().values if x[1] in stopDict[key]]
+        stopNameToID = [x[1] for x in feed.get_stops().values if x[1] in stopDict[key]]
+        nextstoptimes=[]
+        for x in stopids:
+	        nextstoptimes.append(list(getNextStopTime(x,key,feed)))
+        i=0
+        for x in nextstoptimes:
+                if x != []:
+                        uu.printIcon(iconDict.Lines["NYC"][x[0]],stopNameToID[i],x[10],x[7],x[8],x[3])
+                        i = i+1
+
+#print(stopNameToID)
 
 #for x in feed.get_stops().values:
 #    print(x)
@@ -67,17 +77,7 @@ print(stopNameToID)
 #print(gk.stop_times.get_stop_times(feed,"20241115").values)
 #print(gk.stops.build_stop_timetable(feed,"636N",[currentdate]).values[7])
 #print(currentdate)
-nextstoptimes=[]
-for x in stopids:
-	nextstoptimes.append(list(getNextStopTime(x,line,feed)))
-nextstoptimes.remove([])
-print(nextstoptimes)
-i=0
-for x in nextstoptimes:
-        #print(x)
-        #print(x[7])
-        uu.printIcon(iconDict.Lines["NYC"][x[0]],stopNameToID[i],x[10],x[7],x[8],x[3])
-        i = i+1
+#print(nextstoptimes)
         #print(x[3])
 #print(next)
 #print(stopentries)
@@ -89,12 +89,12 @@ for x in feedrt.entity:
       #  print(x.trip_update.stop_time_update[0].stop_id)
         try:
                 if x.trip_update.stop_time_update[0].stop_id in stopids:
-                        print(x.trip_update.trip.start_date)
+                   #     print(x.trip_update.trip.start_date)
                         for z in x.trip_update.stop_time_update:
                                 if z.stop_id in stopids:
-                 #                       pass
-                                        print(z.arrival)
-                                        print(datetime.datetime.fromtimestamp(z.arrival.time))
+                                        pass
+                     #                   print(z.arrival)
+                       #                 print(datetime.datetime.fromtimestamp(z.arrival.time))
         except:
                 pass
 #        else:
