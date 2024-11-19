@@ -64,7 +64,12 @@ def main():
                 i=0
                 for x in nextstoptimes:
                         if x != []:
-                                uu.printIcon(iconDict.Lines["NYC"][x[0]],stopNameToID[i],x[10],x[7],x[8],x[3])
+                                heading = ""
+                                if (x[6][-1] == 'N'):
+                                        heading = "Uptown"
+                                elif (x[6][-1] == 'S'):
+                                        heading = "Downtown"
+                                uu.printIcon(iconDict.Lines["NYC"][x[0]],stopNameToID[i],x[10],x[7],x[8],x[3],heading)
                                 i = i+1
 
         feedrt = gtfs_realtime_pb2.FeedMessage()
