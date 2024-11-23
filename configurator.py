@@ -67,6 +67,43 @@ cityStopArray = {"NYC":{
 		}
 
 }
+def get_stop_name(citName, lineName):
+	stopList = cityStopArray.get(citName).get(lineName)
+	print(stopList)
+	numStops = len(stopList)
+	for x in range(int(math.ceil(numStops/3))):
+		if ((x+(int(numStops/3))+(int(numStops/3))))<numStops:
+			print(str(x) + ": " + stopList[x].ljust(40) + " | " + str(x+(int(numStops/3))) + ": " + stopList[x+(int(numStops/3))].ljust(40) + " | " + str(x+(int(numStops/3))+(int(numStops/3))) + ": " + stopList[x+(int(numStops/3))+(int(numStops/3))] )
+		elif (x+(int(numStops/3)))<numStops:
+			print(str(x) + ": " + stopList[x].ljust(40) + " | " + str(x+(int(numStops/3))) + ": " + stopList[x+(int(numStops/3))].ljust(40) )
+		else:
+			print(str(x) + ": " + stopList[x].ljust(40))
+	while True:
+		try:
+			stopNum = int(input("> "))
+			if stopNum>=numStops:
+				print("Invalid input. City number must be a valid index.")
+			else: 
+				return stopList[stopNum]
+		except ValueError:
+			print("Invalid input. Please enter a number.")
+
+def addStop(addto,added):
+	if added[0] in addto:
+		if added[1] in addto.get(added[0]):
+			if added[2] in addto.get(added[0].get(added[1])):
+				if added[3] in addto.get(added[0]).get(added[1]).get(added[2]):
+					return addto
+				else:
+					addto[(added[0])][added[1]][added[2]].append(added[3])
+			else:
+				addto[(added[0])][added[1]][added[2]]= ({[added[3]]})
+		else:
+			addto[(added[0])][added[1]] = ({{added[2]:[added[3]]}})
+	else:
+		addto[added[0]] = {{added[1]:{added[2]:[added[3]]}}}
+	return addto
+
 def get_city():
 	while True:
 		try:
@@ -77,30 +114,45 @@ def get_city():
 				return cityNum
 		except ValueError:
 			print("Invalid input. Please enter a number.")
-
+configLines = {}
 f1 = True
 while f1:
 	print("These are the supported metro systems. Please enter the number corresponding to the system you would like to configure stops for.\n")
 	for x in range(int(math.ceil(len(cities)/3))):
 		if ((x+2))<len(cities):
-			print(str(x) + ": " + cities[x].ljust(20) + " | " + str(x+1) + cities[x*2].ljust(20) + " | " + str(x+2) + cities[x*3] )
+			print(str(x) + ": " + cities[x].ljust(40) + " | " + str(x+1) + cities[x*2].ljust(40) + " | " + str(x+2) + cities[x*3] )
 		elif (x+1)<len(cities):
-			print(str(x) + ": " + cities[x].ljust(20) + " | " + str(x+1) + cities[x*2].ljust(20) )
+			print(str(x) + ": " + cities[x].ljust(40) + " | " + str(x+1) + cities[x*2].ljust(40) )
 		else:
-			print(str(x) + ": " + cities[x].ljust(20))
+			print(str(x) + ": " + cities[x].ljust(40))
 		citNum = get_city()
+		citName = cities[citNum]
 		f2 = True
 		while f2:
 			print("These are the lines. Please enter the number corresponding to the system you would like to configure stops for.\n")
-			numOfLines = len(cityLinesArray.get(cities[citNum]))
+			numOfLines = len(cityLinesArray.get(citName))
 			for x in range(int(math.ceil(numOfLines/3))):
 				if ((x+(int(numOfLines/3))+(int(numOfLines/3))))<numOfLines:
-					print(str(x) + ": " + longNames.get(cities[citNum])[x].ljust(20) + " | " + str(x+(int(numOfLines/3))) + ": " + longNames.get(cities[citNum])[x+(int(numOfLines/3))].ljust(20) + " | " + str(x+(int(numOfLines/3))+(int(numOfLines/3))) + ": " + longNames.get(cities[citNum])[x+(int(numOfLines/3))+(int(numOfLines/3))] )
+					print(str(x) + ": " + longNames.get(citName)[x].ljust(40) + " | " + str(x+(int(numOfLines/3))) + ": " + longNames.get(cities[citNum])[x+(int(numOfLines/3))].ljust(40) + " | " + str(x+(int(numOfLines/3))+(int(numOfLines/3))) + ": " + longNames.get(cities[citNum])[x+(int(numOfLines/3))+(int(numOfLines/3))] )
 				elif (x+(int(numOfLines/3)))<numOfLines:
-					print(str(x) + ": " + longNames.get(cities[citNum])[x].ljust(20) + " | " + str(x+(int(numOfLines/3))) + ": " + longNames.get(cities[citNum])[x+(int(numOfLines/3))].ljust(20) )
+					print(str(x) + ": " + longNames.get(citName)[x].ljust(40) + " | " + str(x+(int(numOfLines/3))) + ": " + longNames.get(cities[citNum])[x+(int(numOfLines/3))].ljust(40) )
 				else:
-					print(str(x) + ": " + longNames.get(cities[citNum])[x].ljust(20))
-
+					print(str(x) + ": " + longNames.get(citName)[x].ljust(40))
+			getLine = True
+			while getLine:
+				try:
+					lineNum = int(input("> "))
+					if lineNum >= numOfLines:
+						print("Invalid input. Must be within list.")
+					else: 
+						getLine = False
+				except ValueError:
+					print("Invalid input. Please enter the number of the desired line. ")
+			lineName = cityLinesArray.get(citName)[lineNum]
+			longLineName = longNames.get(citName)[lineNum]
+			stopName = get_stop_name(citName,lineName)
+			configLines = addStop(configLines, [citName,lineName,longLineName,stopName])
+			print(configLines)
 			d2 = input("Would you like to configure another line? (Y/N) ")
 			if d2.upper() == "Y":
 				f2 = True

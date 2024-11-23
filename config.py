@@ -17,17 +17,17 @@
 #     
 NYC = {"M":["Broadway-Lafayette St"],"J":["Gates Av"]}
 # PATH lines (order is:Newark-World Trade, Hoboken-World Trade,Journal Square-33rd, Hoboken-33rd)
-PATHNWKWTCStops=[]
+PATHNWKWTCStops=[]      # TODO implement PATH
 PATHHOBWTCStops=[]
 PATHJSQ33Stops=[]
 PATHHOB33Stops=[]
-# Metro-North(MN) Lines
+# Metro-North(MN) Lines     # TODO implement Metro North
 MNPVLStops=[] # Pascack Valley Line      
 MNPJLStops=[] # Port Jervis Line
 MNHaLStops=[] # Harlem Line      
 MNHuLStops=[] # Hudson Line
 MNNHLStops=[] # New Haven Line 
-# LIRR
+# LIRR    # TODO implement LIRR
 LIRRMLStops=[] # Mail Line
 LIRRABStops=[] # Atlantic Branch   
 LIRRMBStops=[] # Montauk Branch
@@ -44,6 +44,10 @@ LIRRPWBStops=[] # Port Washington Branch
 LIRRRkBStops=[] # Ronkonkoma Branch   
 LIRRWHBStops=[] # West Hempstead Branch
  
+
+
+# Set this flag to True to indicate only terminal output. Currently not an available feature
+terminalOutputOnly = False # TODO: implement terminal only mode
 
 
 
