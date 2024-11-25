@@ -60,13 +60,36 @@ cityStopArray = {"NYC":{
 	'SI':
 		["Tottenville","Arthur Kill","Richmond Valley","Pleasant Plains","Prince's Bay","Huguenot","Annadale","Eltingville","Great Kills","Bay Terrace","Oakwood Heights","New Dorp","Grant City","Jefferson Av","Dongan Hills","Old Town","Grasmere","Clifton","Stapleton","Tompkinsville","St George"],
 	'W':
-		["Astoria-Ditmars Blvd","Astoria Blvd","30 Av","Broadway","36 Av","39 Av","Queensboro Plaza","Lexington Av/59 St","5 Av/59 St","57-7 Av","49 St","Times Sq-42 St","34 St-Herald Sq","28 St","23 St","14 St-Union Sq","8 St-NYU","Prince St","Canal St","City Hall","Cortlandt St","Rector St","Whitehall St-South Ferry"],
+		["Astoria Ditmars Blvd","Astoria Blvd","30 Av","Broadway","36 Av","39 Av","Queensboro Plaza","Lexington Av/59 St","5 Av/59 St","57-7 Av","49 St","Times Sq-42 St","34 St-Herald Sq","28 St","23 St","14 St-Union Sq","8 St-NYU","Prince St","Canal St","City Hall","Cortlandt St","Rector St","Whitehall St-South Ferry"],
 	'Z':
 		["Jamaica Center-Parsons/Archer","Sutphin Blvd-Archer Av-JFK Airport","121 St","104 St","Woodhaven Blvd","75 St-Elderts Ln","Crescent St","Norwood Av","Van Siclen Av","Alabama Av","Broadway Junction","Chauncey St","Gates Av","Myrtle Av","Marcy Av","Delancey St Essex St","Bowery","Canal St","Chambers St","Fulton St","Broad St"]
 		
 		}
 
 }
+
+def getStops(lineName,stopName):
+	getLine = True
+	print("uuu")
+	while getLine:
+		try:
+			lineNum = int(input("> "))
+			if lineNum >= numOfLines:
+				print("Invalid input. Must be within list.")
+			else: 
+				addStop([citName,lineName,stopName])
+				d2 = input("Would you like to configure another stop? (Y/N) ")
+				if d2.upper() == "Y":
+					getLine = True
+				else:
+					getLine = False
+		except ValueError:
+			print("Invalid input. Please enter the number of the desired line. ")
+				
+
+
+
+
 def get_stop_name(citName, lineName):
 	stopList = cityStopArray.get(citName).get(lineName)
 	print(stopList)
@@ -88,21 +111,17 @@ def get_stop_name(citName, lineName):
 		except ValueError:
 			print("Invalid input. Please enter a number.")
 
-def addStop(addto,added):
-	if added[0] in addto:
-		if added[1] in addto.get(added[0]):
-			if added[2] in addto.get(added[0].get(added[1])):
-				if added[3] in addto.get(added[0]).get(added[1]).get(added[2]):
-					return addto
-				else:
-					addto[(added[0])][added[1]][added[2]].append(added[3])
+def addStop(added):
+	if added[0] in configLines:
+		if added[1] in configLines.get(added[0]):
+			if added[2] in configLines.get(added[0]).get(added[1]):
+				return configLines
 			else:
-				addto[(added[0])][added[1]][added[2]]= ({[added[3]]})
+				configLines[added[0]][added[1]].append(added[2])
 		else:
-			addto[(added[0])][added[1]] = ({{added[2]:[added[3]]}})
+			configLines[(added[0])][added[1]]= [added[2]]
 	else:
-		addto[added[0]] = {{added[1]:{added[2]:[added[3]]}}}
-	return addto
+		configLines[added[0]] = {added[1]:[added[2]]}
 
 def get_city():
 	while True:
@@ -114,6 +133,7 @@ def get_city():
 				return cityNum
 		except ValueError:
 			print("Invalid input. Please enter a number.")
+global configLines
 configLines = {}
 f1 = True
 while f1:
@@ -149,16 +169,15 @@ while f1:
 				except ValueError:
 					print("Invalid input. Please enter the number of the desired line. ")
 			lineName = cityLinesArray.get(citName)[lineNum]
-			longLineName = longNames.get(citName)[lineNum]
 			stopName = get_stop_name(citName,lineName)
-			configLines = addStop(configLines, [citName,lineName,longLineName,stopName])
+			getStops(lineName,stopName)
 			print(configLines)
 			d2 = input("Would you like to configure another line? (Y/N) ")
 			if d2.upper() == "Y":
 				f2 = True
 			else:
 				f2 = False
-	d1 = input("Would you like to configure another metro? (Y/N)")
+	d1 = input("Would you like to configure another transit agency? (Y/N)")
 	if d1.upper() == "Y":
 		f1 = True
 	else:
