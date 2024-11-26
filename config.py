@@ -15,7 +15,7 @@
 #  SI = SIR
 #      1, 2, 3, 4, 5, 5X, 6, 6X, 7, 7X, A, B, C, D, E, F, FX, FS, G, GS, H, J, L, M, N, Q, R, SI, W, Z
 #     
-NYC = {"W":["49 St"],"J":["Gates Av"]}
+NYC = {"M":["Broadway-Lafayette St"],"J":["Gates Av"]}
 # PATH lines (order is:Newark-World Trade, Hoboken-World Trade,Journal Square-33rd, Hoboken-33rd)
 PATHNWKWTCStops=[]      # TODO implement PATH
 PATHHOBWTCStops=[]
