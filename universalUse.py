@@ -1,6 +1,6 @@
 import time
 
-def printIcon(icon,stationName,date,arrivalTime,departureTime,destination,heading):
+def printIcon(icon,stationName,date,arrivalTime,departureTime,destination,heading,colorcode):
         g = max(len(stationName),len(date),len(arrivalTime),len(destination),16,len(heading))
         bar = "═"*(g+1)
         print("\033[2╔═══════════════════════════════════════════════════╦═" + bar + "╗")
@@ -9,7 +9,7 @@ def printIcon(icon,stationName,date,arrivalTime,departureTime,destination,headin
         y = [" ║ "," ║ "," ╠═"," ║ "," ║ "," ╠═"," ║ "," ║ "," ╠═"," ║ "," ║ "," ╠═"," ║ "," ║ "," ╠═"," ║ "," ║ "," ╠═"," ║ "," ║ "," ║ "]
         u = [" ║ "," ║ ","╣"," ║ "," ║ ","╣"," ║ "," ║ ","╣"," ║ "," ║ ","╣"," ║ "," ║ ","╣"," ║ "," ║ ","╣"," ║ "," ║ "," ║"]
         for x in icon:
-                print("║" + x + y[i] + dataArray[i]+ u[i])
+                print("║" + colorcode + x + "\x1b[0m" + y[i] + dataArray[i]+ u[i])
                 i = i+1
         print("╚═══════════════════════════════════════════════════╩═" + bar + "╝")
         time.sleep(5)

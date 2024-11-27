@@ -15,7 +15,7 @@
 #  SI = SIR
 #      1, 2, 3, 4, 5, 5X, 6, 6X, 7, 7X, A, B, C, D, E, F, FX, FS, G, GS, H, J, L, M, N, Q, R, SI, W, Z
 #     
-NYC = {"M":["Broadway-Lafayette St"],"J":["Gates Av"]}
+NYC = {"M":["Broadway-Lafayette St"],"J":["Gates Av"],"Z":["Gates Av"]} # TODO configure heading
 # PATH lines (order is:Newark-World Trade, Hoboken-World Trade,Journal Square-33rd, Hoboken-33rd)
 PATHNWKWTCStops=[]      # TODO implement PATH
 PATHHOBWTCStops=[]
@@ -43,11 +43,11 @@ LIRRPJBStops=[] # Port Jefferson Branch
 LIRRPWBStops=[] # Port Washington Branch   
 LIRRRkBStops=[] # Ronkonkoma Branch   
 LIRRWHBStops=[] # West Hempstead Branch
- 
+ # TODO reasearch ferries and busses
+ # TODO research other metro systems 
+ # - priority on DC, Baltimore, Penn, and Amtrak NEC lines, also look into GTFS or equiv. in Europe. 
 
 
 # Set this flag to True to indicate only terminal output. Currently not an available feature
 terminalOutputOnly = False # TODO: implement terminal only mode
-
-
-
+colorCodes = "ANSI256" # TODO: implement other color code options

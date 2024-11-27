@@ -66,10 +66,14 @@ def main():
                         if x != []:
                                 heading = ""
                                 if (x[6][-1] == 'N'):
-                                        heading = "Uptown"
+                                        heading = "Uptown" # TODO filter heading by config
                                 elif (x[6][-1] == 'S'):
                                         heading = "Downtown"
-                                uu.printIcon(iconDict.Lines["NYC"][x[0]],stopNameToID[i],x[10],x[7],x[8],x[3],heading)
+                                if c.colorCodes == "ANSI256":
+                                        color = iconDict.lineColorsANSI256["NYC"][x[0]]
+                                else:
+                                        color = ""
+                                uu.printIcon(iconDict.Lines["NYC"][x[0]],stopNameToID[i],x[10],x[7],x[8],x[3],heading,color)
                                 i = i+1
 
         feedrt = gtfs_realtime_pb2.FeedMessage()
