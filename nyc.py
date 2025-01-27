@@ -76,21 +76,21 @@ def main():
                                 uu.printIcon(iconDict.Lines["NYC"][x[0]],stopNameToID[i],x[10],x[7],x[8],x[3],heading,color)
                                 i = i+1
 
-        feedrt = gtfs_realtime_pb2.FeedMessage()
-        responsert = requests.get('https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2Fgtfs', headers={'x-api-key':MTA_API_KEY})
-        feedrt.ParseFromString(responsert.content)
-        for x in feedrt.entity:
+ #       feedrt = gtfs_realtime_pb2.FeedMessage()
+   #     responsert = requests.get('https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2Fgtfs', headers={'x-api-key':MTA_API_KEY})
+  #      feedrt.ParseFromString(responsert.content)
+   #     for x in feedrt.entity:
               #  print(x.trip_update.stop_time_update[0].stop_id)
-                try:
-                        if x.trip_update.stop_time_update[0].stop_id in stopids:
+    #            try:
+     #                   if x.trip_update.stop_time_update[0].stop_id in stopids:
                            #     print(x.trip_update.trip.start_date)
-                                for z in x.trip_update.stop_time_update:
-                                        if z.stop_id in stopids:
-                                                pass
+      #                          for z in x.trip_update.stop_time_update:
+       #                                 if z.stop_id in stopids:
+        #                                        pass
                              #                   print(z.arrival)
                                #                 print(datetime.datetime.fromtimestamp(z.arrival.time))
-                except:
-                        pass
+         #       except:
+          #              pass
         #        else:
         #                print(x.trip_update.trip.trip_id)
 

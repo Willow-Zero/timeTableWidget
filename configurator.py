@@ -87,8 +87,19 @@ def getStops(lineName,stopName):
 			print("Invalid input. Please enter the number of the desired line. ")
 				
 
-
-
+def printDict(dictionary):
+	for key in dictionary:
+		print("[")
+		print(key)
+		for value in dictionary[key]:
+			print("	[")
+			print("	" + value)
+			for val in dictionary[key][value]:
+				print("		[")
+				print("		" + val)
+				print("		]")
+			print("	]")
+		print("]")
 
 def get_stop_name(citName, lineName):
 	stopList = cityStopArray.get(citName).get(lineName)
@@ -122,6 +133,7 @@ def addStop(added):
 			configLines[(added[0])][added[1]]= [added[2]]
 	else:
 		configLines[added[0]] = {added[1]:[added[2]]}
+	print(configLines)
 
 def get_city():
 	while True:
@@ -171,7 +183,6 @@ while f1:
 			lineName = cityLinesArray.get(citName)[lineNum]
 			stopName = get_stop_name(citName,lineName)
 			getStops(lineName,stopName)
-			print(configLines)
 			d2 = input("Would you like to configure another line? (Y/N) ")
 			if d2.upper() == "Y":
 				f2 = True
@@ -182,3 +193,4 @@ while f1:
 		f1 = True
 	else:
 		f1 = False
+printDict(configLines)

@@ -1,7 +1,7 @@
 
-import config as c
+import config as conf
 
-if ((len(c.NYC)) > 0):
+if ((len(conf.NYC)) > 0):
         import nyc
         nyc.main()
 
