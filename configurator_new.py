@@ -65,5 +65,20 @@ cityStopArray = {"NYC":{
 		}
 }
 
+def main():
+	finalDict = {} #final output dict
+	continueCity = True
+	while continueCity:
+		i = 0
+		for city in range(len(cityStopArray)):
+			print(str(city-1) + ": " + cityStopArray[city-1])
+		
+	# TODO: get city recursively
+	# TODO: get line recursively
+	# TODO: get stop recursively
+	# TODO: add city/line/stop to finaldict - within recursive
+	# TODO: write to config file
 
 
+
+main()
