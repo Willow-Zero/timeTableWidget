@@ -70,12 +70,54 @@ def main():
 	continueCity = True
 	while continueCity:
 		i = 0
+		print("These are the metro systems available for configuration at this time. Please enter the index number of the system you would like to configure:")
 		for city in range(len(cityStopArray)):
-			print(str(city-1) + ": " + cityStopArray[city-1])
-		
-	# TODO: get city recursively
-	# TODO: get line recursively
-	# TODO: get stop recursively
+			print(str(city) + ": " + list(cityStopArray.keys())[city])
+		cityIndex = int(input("> ")) 
+		while cityIndex>=len(cityStopArray):
+			print("ERROR: index out of range")
+			cityIndex = int(input("> ")) 
+		cityName = list(cityStopArray.keys())[cityIndex]
+		continueLine = True
+		while continueLine:
+			print("These are the available lines:")
+			for line in range(len(cityStopArray[cityName])):
+				print(str(line) + ": " + longNames[cityName][line])
+			lineIndex = int(input("> "))
+			while lineIndex>=len(cityStopArray[cityName]):
+				print("ERROR: index out of range")
+				lineIndex = int(input("> ")) 
+			lineName = list(cityStopArray[cityName].keys())[lineIndex]
+			continueStops = True
+			while continueStops:
+				print("These are the available stops:")
+				for stop in range((len(cityStopArray[cityName][lineName]))):
+					print(str(stop) + ": " + list((cityStopArray[cityName][lineName]))[stop])
+				stopIndex = int(input("> "))
+				while stopIndex>=len(cityStopArray[cityName][lineName]):
+					print("ERROR: index out of range")
+					stopIndex = int(input("> ")) 
+				stopName = list(cityStopArray[cityName][lineName])[stopIndex]
+				if cityName in finalDict.keys():
+					if lineName in finalDict[cityName].keys():
+						if stopName in finalDict[cityName][lineName]:
+							print("Stop Already Present.")
+						else:
+							finalDict[cityName][lineName].append(stopName)
+					else:
+						finalDict[cityName][lineName] = [stopName]
+				else:
+					finalDict[cityName] = {lineName:[stopName]}
+				print(finalDict)
+
+
+
+	# DONE: get city 
+	# TODO: repeat on termination
+	# DONE: get line 
+	# TODO: repeat on termination
+	# TODO: get stop 
+	# TODO: repeat on trmination
 	# TODO: add city/line/stop to finaldict - within recursive
 	# TODO: write to config file
 
