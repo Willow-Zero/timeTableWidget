@@ -23,4 +23,4 @@ dependencies: python3, [gtfs-kit](https://pypi.org/project/gtfs-kit/), [requests
 [ ] Support for non-NYC trains
 
 
-I release this code under CC-BY-SA 4.0
+I release this code under CC-NC-BY-SA 4.0
